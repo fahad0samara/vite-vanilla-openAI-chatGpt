@@ -1,97 +1,226 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+body.dark-mode {
+  background-color: #000;
+  color: #fff;
 }
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+.dark-mode {
+  background-color: #000;
+  color: #fff;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.dark-mode .chat-header {
+  background-color: #333;
+  color: #fff;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vanilla:hover {
-  filter: drop-shadow(0 0 2em #3178c6aa);
+.dark-mode .message.received {
+  background-color: #333;
+  color: #fff;
 }
 
-.card {
-  padding: 2em;
+.dark-mode .chat-body {
+  background-color: #000;
+  color: #fff;
 }
 
-.read-the-docs {
-  color: #888;
+.dark-mode .chat-footer {
+  background-color: #333;
+  color: #fff;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+.dark-mode .sidebar {
+  background-color: #333;
+  color: #fff;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* Add shadow to sidebar */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* Add shodo effect to sidebar */
+}
+
+.dark-mode .sidebar button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  padding: 8px;
+  margin-bottom: 8px;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+.dark-mode .sidebar button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  flex: none;
+  width: 270px;
+  background-color: #4285f4;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  /* Add shadow to sidebar */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-buttons {
+  margin-top: auto;
+}
+
+.sidebar button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  padding: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+.sidebar button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.chat-container {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  background-color: #f2f2f2;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-pic {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #fff;
+  margin-right: 8px;
+}
+.profile-name {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.chat-body {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+}
+
+.message {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.message-content {
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  }
+    .received {
+      align-self: flex-start;
+      background-color: #f2f2f2;
+      color: #333;
+    }
+    .sent {
+      align-self: flex-end;
+      background-color: #4285f4;
+      color: #fff;
+    }
+    .message-time {
+      font-size: 12px;
+      margin-top: 4px;
+    }
+  
+    .chat-footer {
+      display: flex;
+      align-items: center;
+      padding: 12px;
+      background-color: #f2f2f2;
+      border-top: 1px solid #e0e0e0;
+      box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+      /* Add shadow to footer */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      /* Add shodo effect to footer */
+    }
+  
+    .chat-footer input[type="text"] {
+      flex: 1;
+      padding: 8px;
+      border: none;
+      border-radius: 4px;
+      margin-right: 8px;
+      font-size: 14px;
+    }
+                .chat-footer button {
+                  background-color: #4285f4;
+                  color: #fff;
+                  padding: 8px 16px;
+                  border: none;
+                  border-radius: 4px;
+                  font-size: 14px;
+                }
+        .chat-history {
+          overflow-y: auto;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          margin-bottom: 30px;
+          align-items: center;
+          max-height: calc(100vh - 40px - 32px - 32px - 40px);
+        }
+/* Add this CSS code at the end of your styles.css file */
+
+.sidebar.hidden {
+  display: none;
+}
+@media only screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+
+    .sidebar {
+      display: none;
+
+      .sidebar.hidden {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        padding: 20px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 9999;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+
+    .sidebar.hidden .chat-history,
+      .sidebar.hidden .sidebar-buttons {
+        display: none;
+      }
+    }
+    }
+    }
+    }

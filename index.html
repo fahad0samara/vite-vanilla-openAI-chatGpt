@@ -1,13 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatGPT</title>
+  <link rel="stylesheet" type="text/css" href="/styles.css" />
   </head>
-  <body>
-    <div id="app"></div>
+
+<body>
+  <div id="app">
+    <div class="container">
+      <div class="chat-container">
+        <div class="chat-header">
+          <div class="profile-pic"></div>
+          <div class="profile-name">ChatGPT</div>
+        </div>
+        <div class="chat-body">
+          <div class="message received">
+            <div class="message-content">
+              Hello! How can I assist you today?
+            </div>
+            <div class="message-time">10:30 AM</div>
+          </div>
+          <div class="message sent">
+            <div class="message-content">
+              I have a question about ChatGPT cloning.
+            </div>
+            <div class="message-time">10:32 AM</div>
+          </div>
+          <div class="message received">
+            <div class="message-content">
+              Sure, I can help you with that.
+            </div>
+            <div class="message-time">10:34 AM</div>
+          </div>
+          <!-- More messages -->
+        </div>
+        <div class="chat-footer">
+          <input type="text" placeholder="Type your message..." />
+          <button>Send</button>
+        </div>
+      </div>
+
+      <div class="sidebar">
+        <button class="menu-btn" onclick="toggleSidebar()">Menu</button>
+        <div class="chat-history">
+          <button>Conversation 1</button>
+          <button>Conversation 2</button>
+          <button>Conversation 3</button>
+          <button>Conversation 4</button>
+          <button>Conversation 5</button>
+          <button>Conversation 6</button>
+          <button>Conversation 7</button>
+          <button>Conversation 8</button>
+          <button>Conversation 9</button>
+          <button>Conversation 10</button>
+          <button>Conversation 5</button>
+          <button>Conversation 6</button>
+          <button>Conversation 7</button>
+          <button>Conversation 8</button>
+          <button>Conversation 9</button>
+          <button>Conversation 10</button>
+        </div>
+        <div class="sidebar-buttons">
+          <button>Clear</button>
+          <button>End</button>
+          <button id="dark-mode-btn">Dark Mode</button>
+          <button>Upload</button>
+          <button>Quick Replies</button>
+        </div>
+      </div>
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
-  </body>
+    <script>
+      function toggleSidebar() {
+        const sidebar = document.querySelector('.sidebar');
+        sidebar.classList.toggle('hidden');
+      }
+    </script>
+    </div>
+</body>
+
 </html>
