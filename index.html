@@ -6,7 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ChatGPT</title>
   <link rel="stylesheet" type="text/css" href="/styles.css" />
-  </head>
+  <style>
+
+  </style>
+</head>
 
 <body>
   <div id="app">
@@ -15,6 +18,7 @@
         <div class="chat-header">
           <div class="profile-pic"></div>
           <div class="profile-name">ChatGPT</div>
+          <button class="menu-toggle" onclick="toggleSidebar()">open the sidebar</button>
         </div>
         <div class="chat-body">
           <div class="message received">
@@ -41,46 +45,47 @@
           <input type="text" placeholder="Type your message..." />
           <button>Send</button>
         </div>
+        <!-- Added button for small screens -->
       </div>
 
       <div class="sidebar">
-        <button class="menu-btn" onclick="toggleSidebar()">Menu</button>
-        <div class="chat-history">
-          <button>Conversation 1</button>
-          <button>Conversation 2</button>
-          <button>Conversation 3</button>
-          <button>Conversation 4</button>
-          <button>Conversation 5</button>
-          <button>Conversation 6</button>
-          <button>Conversation 7</button>
-          <button>Conversation 8</button>
-          <button>Conversation 9</button>
-          <button>Conversation 10</button>
-          <button>Conversation 5</button>
-          <button>Conversation 6</button>
-          <button>Conversation 7</button>
-          <button>Conversation 8</button>
-          <button>Conversation 9</button>
-          <button>Conversation 10</button>
+        <div class="menu-btn-container">
+
         </div>
-        <div class="sidebar-buttons">
-          <button>Clear</button>
-          <button>End</button>
-          <button id="dark-mode-btn">Dark Mode</button>
-          <button>Upload</button>
-          <button>Quick Replies</button>
+        <div class="sidebar-drawer">
+          <div class="chat-history">
+            <!-- Conversation buttons -->
+            <button>Conversation 1</button>
+            <button>Conversation 2</button>
+            <button>Conversation 3</button>
+            <button>Conversation 4</button>
+            <button>Conversation 5</button>
+            <button>Conversation 6</button>
+            <button>Conversation 7</button>
+            <button>Conversation 8</button>
+            <button>Conversation 9</button>
+            <button>Conversation 10</button>
+          </div>
+          <div class="sidebar-buttons">
+            <!-- Sidebar buttons -->
+            <button>Clear</button>
+            <button>End</button>
+            <button id="dark-mode-btn">Dark Mode</button>
+            <button>Upload</button>
+            <button>Quick Replies</button>
+          </div>
         </div>
       </div>
     </div>
 
     <script type="module" src="/src/main.ts"></script>
     <script>
-      function toggleSidebar() {
-        const sidebar = document.querySelector('.sidebar');
-        sidebar.classList.toggle('hidden');
-      }
+    function toggleSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.style.display = sidebar.style.display === 'none' ? 'flex' : 'none';
+    }
     </script>
-    </div>
+  </div>
 </body>
 
 </html>
