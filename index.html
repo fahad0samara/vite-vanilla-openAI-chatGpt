@@ -6,7 +6,281 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ChatGPT</title>
   <link rel="stylesheet" type="text/css" href="css/styles.css" />
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
   <style>
+    body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    }
+
+    body.dark-mode {
+    background-color: #000;
+    color: #fff;
+    }
+
+    .dark-mode {
+    background-color: #000;
+    color: #fff;
+    }
+
+    .dark-mode .chat-header {
+    background-color: #333;
+    color: #fff;
+    }
+
+    .dark-mode .message.received {
+    background-color: #333;
+    color: #fff;
+    }
+
+    .dark-mode .chat-body {
+    background-color: #000;
+    color: #fff;
+    }
+
+    .dark-mode .chat-footer {
+    background-color: #333;
+    color: #fff;
+    }
+
+    .dark-mode .sidebar {
+    background-color: #333;
+    color: #fff;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .dark-mode .sidebar button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    padding: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    }
+
+    .dark-mode .sidebar button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    }
+    .dark-mode .sidebar button.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    }
+    .dark-mode .sidebar button .material-icons {
+    color: #fff;
+    }
+    .dark-mode .sidebar .user-list .user {
+    background-color: #333;
+    color: #fff;
+    }
+    .dark-mode .sidebar .user-list .user.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .dark-mode .disclaimer {
+    background-color: #333;
+    color: #fff;
+    }
+
+
+
+
+    .container {
+    display: flex;
+    height: 100vh;
+    }
+
+    .sidebar {
+    flex: none;
+    width: 270px;
+    background-color: #4285f4;
+    color: #fff;
+    padding: 20px;
+    display: none;
+    z-index: 4;
+    flex-direction: column;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .sidebar-buttons {
+    margin-top: auto;
+    }
+
+    .sidebar button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    padding: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    }
+
+    .sidebar button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .chat-container {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+    background-color: #f2f2f2;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .profile-pic {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-right: 8px;
+    }
+
+    .profile-name {
+    font-weight: bold;
+    font-size: 16px;
+    }
+
+    .chat-body {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+
+    }
+
+    .message {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    }
+
+    .message-content {
+    padding: 12px;
+    border-radius: 16px;
+    font-size: 14px;
+    line-height: 1.4;
+    }
+
+    .received {
+    align-self: flex-start;
+    background-color: #f2f2f2;
+    color: #333;
+    }
+
+    .sent {
+    align-self: flex-end;
+    background-color: #4285f4;
+    color: #fff;
+    }
+
+    .message-time {
+    font-size: 12px;
+    margin-top: 4px;
+    }
+
+    .chat-footer {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    background-color: #f2f2f2;
+    border-bottom: 1px solid #e0e0e0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    bottom: 8;
+    z-index: 1;
+    }
+
+    .chat-footer input[type="text"] {
+    flex: 1;
+    padding: 8px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 8px;
+    font-size: 14px;
+    }
+
+    .chat-footer button {
+    background-color: #4285f4;
+    color: #fff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    }
+
+    .chat-history {
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 30px;
+    }
+
+    /* Add media query for small screens */
+    @media only screen and (max-width: 768px) {
+    .sidebar {
+    width: 50%;
+    height: 100vh;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #4285f4;
+    overflow-x: hidden;
+    padding-top: 60px;
+
+    transition: transform 0.3s ease-in-out;
+    }
+
+    .sidebar-buttons {
+    margin-top: 40px;
+    }
+
+    .sidebar-buttons button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    padding: 8px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    }
+
+    .chat-container {
+    flex: 1;
+    }
+    }
+    .menu-toggle {
+    position: absolute;
+    left: 16px;
+    top: 16px;
+    z-index: 2;
+
+    border: none;
+
+    cursor: pointer;
+
+    }
+    .disclaimer {
+    padding: 20px;
+    background-color: #f2f2f2;
+
+    font-size: 12px;
+    text-align: center;
+    color: #777;
+
+    }
+
 
   </style>
 </head>
@@ -16,9 +290,11 @@
     <div class="container">
       <div class="chat-container">
         <div class="chat-header">
+          <button class="menu-toggle" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
+          </button>
           <div class="profile-pic"></div>
           <div class="profile-name">ChatGPT</div>
-          <button class="menu-toggle" onclick="toggleSidebar()">open the sidebar</button>
         </div>
         <div class="chat-body">
           <div class="message received">
@@ -45,13 +321,14 @@
           <input type="text" placeholder="Type your message..." />
           <button>Send</button>
         </div>
-        <!-- Added button for small screens -->
+    <div class="disclaimer">
+      Free Research Preview. ChatGPT may produce inaccurate information about people, places, or facts. ChatGPT May 24
+      Version
+    </div>
+
       </div>
 
       <div class="sidebar">
-        <div class="menu-btn-container">
-
-        </div>
         <div class="sidebar-drawer">
           <div class="chat-history">
             <!-- Conversation buttons -->
@@ -66,25 +343,35 @@
             <button>Conversation 9</button>
             <button>Conversation 10</button>
           </div>
-          <div class="sidebar-buttons">
-            <!-- Sidebar buttons -->
-            <button>Clear</button>
-            <button>End</button>
-            <button id="dark-mode-btn">Dark Mode</button>
-            <button>Upload</button>
-            <button>Quick Replies</button>
-          </div>
+        </div>
+        <div class="sidebar-buttons">
+          <!-- Sidebar buttons -->
+          <button>Clear</button>
+          <button>End</button>
+          <button id="dark-mode-btn">Dark Mode</button>
+          <button>Upload</button>
+          <button>Quick Replies</button>
         </div>
       </div>
     </div>
 
     <script type="module" src="/src/ts/main.ts"></script>
     <script>
-  function toggleSidebar() {
-  const sidebar = document.querySelector(".sidebar");
-  sidebar.style.display = sidebar.style.display === "none" ? "flex" : "none";
-  }
+      function toggleSidebar() {
+      const sidebar = document.querySelector(".sidebar");
+        if (sidebar.style.display === "none" || sidebar.style.display === "") {
+        sidebar.style.display = "flex";
+        } else {
+        sidebar.style.display = "none";
+        }
+        }
 
+      // Check screen width on page load and hide sidebar on small screens
+      window.addEventListener("load", function () {
+      const sidebar = document.querySelector(".sidebar");
+      if (window.innerWidth <= 768) { sidebar.style.display="none" ; } else { sidebar.style.display="flex" ; } });
+        window.addEventListener("resize", function () { const sidebar=document.querySelector(".sidebar"); if
+        (window.innerWidth <=768) { sidebar.style.display="none" ; } else { sidebar.style.display="flex" ; } });
     </script>
   </div>
 </body>
