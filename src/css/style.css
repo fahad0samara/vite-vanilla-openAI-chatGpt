@@ -87,7 +87,7 @@ body.dark-mode {
 .sidebar {
   flex: none;
   width: 270px;
-  background-color: #4285f4;
+    background-color: #3578d6;
   color: #fff;
   padding: 20px;
   display: none;
@@ -146,8 +146,9 @@ body.dark-mode {
 
 .chat-body {
   flex: 1;
-  padding: 16px;
+padding: 40px;
   overflow-y: auto;
+
 
 }
 
@@ -158,27 +159,34 @@ body.dark-mode {
 }
 
 .message-content {
-  padding: 12px;
-  border-radius: 16px;
-  font-size: 14px;
-  line-height: 1.4;
+  padding: 4px;
+    border-radius: 16px;
+  font-size: 16px;
+    line-height: 1.7;
+    margin-left: 10px;
 }
 
 .received {
   align-self: flex-start;
   background-color: #f2f2f2;
   color: #333;
+      border-radius: 10px;
+        box-shadow: 7 2px 4px rgba(0, 0, 0, 0.1);
+        text-shadow: 2px 2px 4px rgba(3, 79, 230, 0.2);
 }
 
 .sent {
   align-self: flex-end;
-  background-color: #4285f4;
+  background-color: #3578d6;
   color: #fff;
+        border-radius: 10px;
+          box-shadow: 7 2px 4px rgba(0, 0, 0, 0.1);
+          text-shadow: 2px 2px 4px rgba(3, 79, 230, 0.2);
 }
 
 .message-time {
   font-size: 12px;
-  margin-top: 4px;
+margin: 5px;
 }
 
 .chat-footer {
