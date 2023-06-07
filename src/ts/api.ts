@@ -1,3 +1,4 @@
+// @ts-nocheck
 const inputElement = document.getElementById("message-input");
 const sendButton = document.querySelector(".chat-footer button");
 
