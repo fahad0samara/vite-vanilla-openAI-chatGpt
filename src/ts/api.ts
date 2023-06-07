@@ -8,7 +8,7 @@ inputElement.addEventListener("keydown", function (event) {
   }
 });
 
-const apiKey = "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";
+const apiKey = "apiKey";
 const model = "gpt-3.5-turbo";
 const temperature = 1;
 let lastRequestTime = 0;
